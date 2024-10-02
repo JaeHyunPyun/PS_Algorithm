@@ -4,102 +4,53 @@
 using namespace std;
 
 
-void printv(vector<int> v)
-{
-  for(int i=0; i<v.size(); i++)
-  {
-    cout << v[i] << " ";
-  }
-  cout << "\n";
-  
-}
-
-void printvv(vector<vector<int>> v)
-{
-  for(int i=0; i<v.size(); i++)
-  {
-    for(int j=0; j<v[i].size(); j++)
-    {
-      cout << v[i][j] << " ";
-    }
-    cout << "\n"; 
-  }
-  cout << "\n"; 
-}
-
-
-void combination(vector<vector<int>>* result, vector<int> v, int start, int n, int r)
-{
-  if(v.size()== r)
-  {
-    result->push_back(v);
-    return;
-  }
-
-  for(int i=start; i<n; i++)
-  {
-    v.push_back(i);
-    combination(result, v, i+1, n, r);
-    v.pop_back();
-  }
-
-  return;
-}
-
 int main(){
   ios::sync_with_stdio(0);
   cin.tie(0);
 
-  int dw_height[9];
+  int dw_height[9]; int result[7];
 
-  for (int i=0; i<9; i++)
-  {
-    cin >> dw_height[i];
-  }
+  for(int i=0; i<9; i++){cin >> dw_height[i];}
 
-
-  int temp = 0;
-
-  //정렬
-  for (int i=0; i<9; i++)
-  {
-    int* min_height = &dw_height[i];
-    for(int j=i+1; j<9; j++)
+  //9C7 조합찾기
+  for(int a=0; a<8; a++)
+  {int total = 0;
+    // cout << "total1_add: " << &total << "\n";
+    for(int b=a+1; b<9; b++)
     {
-      if(*min_height>dw_height[j])
+      total =0;
+      // a,b(제외대상)와 일치하지 않는 7개의 인덱스를 선별해서 result에 입력
+      for(int c=0, i=0; c<9; c++){if(c!=a && c!=b){result[i++] = dw_height[c];}}
+
+      // 구해진 7개 조합의 합 구하기
+      for(int i=0; i<7; i++)
       {
-        temp = *min_height;
-        *min_height = dw_height[j];
-        dw_height[j] = temp;
+        total += result[i];
       }
-    }
-  }
 
-
-  //만족하는 7명 찾기
-  
-  // 조합 생성
-  vector<int> samp_vec;
-  vector<vector<int>> result;
-  combination(&result, samp_vec, 0, 9,7);
-
-
-  // 조합의 합 구해보기
- 
-  for(int i=0; i<result.size(); i++)
-    {
-      int comb_sum = 0;
-      for(int j=0; j<result[i].size(); j++)
+      // break point
+      if(total == 100)
       {
-        comb_sum += dw_height[result[i][j]];
-      }
-      if(comb_sum == 100)
-      {
-        for(int k=0; k<result[i].size(); k++)
-        {
-          cout << dw_height[result[i][k]] << '\n';
-        }
         break;
-      }      
+      }
     }
+
+    // break point
+    if(total == 100)
+    {
+      break;
+    }
+  }
+
+  //결과를 오름차순으로 정렬
+  sort(result,result+7);
+
+  //결과 출력
+  for(int i=0; i<7; i++)
+  {
+    cout << result[i] << "\n";
+  }
+  
+
+
 }
