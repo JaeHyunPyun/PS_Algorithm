@@ -1,31 +1,20 @@
 #include <iostream>
-#include <bits/stdc++.h>
 
 using namespace std;
 
-int main(){
-  ios::sync_with_stdio(0);
-  cin.tie(0);
+int main() {
+  char vocabulary[101];
 
-  char user_input[102];
+  int alphabetCount[26];
 
-  cin >> user_input;
+  fill(alphabetCount, alphabetCount + 26, 0);
 
-  int alphabets[26];
-  fill(alphabets, alphabets+26, 0);
-  
-  for(int i=0; i<102 && user_input[i]!='\0'; i++)
-  {
-    int char_to_int = int(user_input[i]-97);
-    if(char_to_int>=0 && char_to_int <26)
-      {
-        alphabets[char_to_int]++; 
-      }
+  cin >> vocabulary;
+  for (int i = 0; vocabulary[i] != '\0' && i < 101; i++) {
+    alphabetCount[vocabulary[i] - 'a']++;
   }
 
-  for(int i =0; i<26; i++)
-  {
-    cout<< alphabets[i] << " ";
+  for (int i = 0; i < 26; i++) {
+    cout << alphabetCount[i] << ' ';
   }
-
 }
