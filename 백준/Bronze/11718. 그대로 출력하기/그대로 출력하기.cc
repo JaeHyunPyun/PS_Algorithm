@@ -7,17 +7,9 @@ int main() {
   ios::sync_with_stdio(0);
   cin.tie(0);
 
-  while (true) {
-    char input[101] = {
-        0,
-    };
+  char input[101];
 
-    cin.getline(input, sizeof(input));
-
-    if (input[0] == '\0') {
-      break;
-    }
-
+  while (cin.getline(input, sizeof(input))) {
     cout << input << endl;
   }
 
