@@ -1,29 +1,22 @@
 #include <iostream>
+
 using namespace std;
 
-void smallNum(int array_len, int target)
-{
-  int element = 0;
-  for (int i = 0; i < array_len; i++)
-  {
-    cin >> element;
-    if (element < target)
-    {
-      cout << element << " ";
-    }
-  }
-}
-
-int main()
-{
+int main() {
   ios::sync_with_stdio(0);
   cin.tie(0);
 
-  int N = 0;
-  int X = 0;
+  int inputSize = 0;
+  int targetNumber = 0;
+  int input = 0;
 
-  cin >> N;
-  cin >> X;
+  cin >> inputSize >> targetNumber;
 
-  smallNum(N, X);
+  for (int i = 0; i < inputSize; i++) {
+    cin >> input;
+
+    if (input < targetNumber) {
+      cout << input << " ";
+    }
+  }
 }
