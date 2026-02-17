@@ -1,16 +1,14 @@
-#include<iostream>
-#include<bits/stdc++.h>
+#include <iostream>
 
 using namespace std;
 
-int main(){
+int main() {
   ios::sync_with_stdio(0);
   cin.tie(0);
 
-  cout << "\\    /\\\n" ;
-  cout <<" )  ( ')\n" ;
-  cout << "(  /  )\n" ;
+  cout << "\\    /\\" << "\n";
+  cout << " )  ( ')" << "\n";
+  cout << "(  /  )" << "\n";
   cout << " \\(__)|";
-
   return 0;
 }
