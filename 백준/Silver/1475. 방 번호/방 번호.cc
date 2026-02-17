@@ -1,37 +1,33 @@
-#include <bits/stdc++.h>
+#include <algorithm>
 #include <iostream>
 
 using namespace std;
 
 int main() {
-  char userInput[8];
-  int num_count_arr[10];
+  ios::sync_with_stdio(0);
+  cin.tie(0);
 
-  fill(num_count_arr, num_count_arr + 10, 0);
+  int zeroToNine[10];
+  fill(zeroToNine, zeroToNine + 10, 0);
 
-  cin >> userInput;
+  int number = 0;
+  cin >> number;
 
-  for (int i = 0; i < 8 && userInput[i] != '\0'; i++) {
-    num_count_arr[userInput[i] - '0']++;
+  while (number > 0) {
+    zeroToNine[number % 10]++;
+    number /= 10;
   }
 
-  // 6이랑 9 합치기
-  num_count_arr[6] =
-      int(ceil((num_count_arr[6] + float(num_count_arr[9])) / 2));
-  num_count_arr[9] = 0;
-
-  // debug
-  // for (int i = 0; i < 10; i++) {
-  //   cout << num_count_arr[i] << " ";
-  // }
-  // cout << '\n';
-
-  int max = num_count_arr[0];
-  // set amount count
-  for (int i = 0; i < 10; i++) {
-    if (num_count_arr[i] > max) {
-      max = num_count_arr[i];
-    }
+  if (zeroToNine[6] != 0 || zeroToNine[9] != 0) {
+    int sum = zeroToNine[6] + zeroToNine[9];
+    int slice = sum / 2;
+    int residue = sum - slice;
+    zeroToNine[6] = slice;
+    zeroToNine[9] = residue;
   }
-  cout << max << '\n';
+
+  int max = *max_element(zeroToNine, zeroToNine + 10);
+  cout << max << endl;
+
+  return 0;
 }
