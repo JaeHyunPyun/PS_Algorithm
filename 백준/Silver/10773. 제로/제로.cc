@@ -1,34 +1,37 @@
 #include <iostream>
-#include <vector>
+#include <stack>
 
 using namespace std;
 
 int main() {
+  ios::sync_with_stdio(0);
+  cin.tie(0);
 
-  int inputCount = 0;
+  stack<int> s;
 
-  cin >> inputCount;
-  vector<int> userInputArray;
+  int N;
+  cin >> N;
 
-  for (int i = 0; i < inputCount; i++) {
-    int currentInput = 0;
+  while (N--) {
+    int input;
+    cin >> input;
 
-    cin >> currentInput;
-
-    if (currentInput > 0) {
-      userInputArray.push_back(currentInput);
+    if (input == 0) {
+      if (!s.empty()) {
+        s.pop();
+      }
     } else {
-      userInputArray.pop_back();
+      s.push(input);
     }
   }
 
-  if (userInputArray.size() < 0) {
-    cout << 0;
-  } else {
-    int sum = 0;
-    for (int i = 0; i < userInputArray.size(); i++) {
-      sum += userInputArray[i];
-    }
-    cout << sum;
+  int sum = 0;
+  while (!s.empty()) {
+    sum += s.top();
+    s.pop();
   }
+
+  cout << sum;
+
+  return 0;
 }
