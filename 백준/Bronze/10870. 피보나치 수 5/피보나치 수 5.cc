@@ -2,26 +2,24 @@
 
 using namespace std;
 
+int fivonacci(int N) {
+
+  if (N == 0)
+    return 0;
+  if (N == 1)
+    return 1;
+
+  return fivonacci(N - 1) + fivonacci(N - 2);
+}
+
 int main() {
   ios::sync_with_stdio(0);
   cin.tie(0);
 
-  int targetIndex = 0;
-  cin >> targetIndex;
+  int N;
+  cin >> N;
 
-  int baseNumZero = 0;
-  int baseNumOne = 1;
-  int temp = 0;
-  int targetNum = 0;
+  cout << fivonacci(N);
 
-  if (targetIndex == 1) {
-    cout << 1;
-  } else {
-    for (int i = 0; i < targetIndex - 1; i++) {
-      temp = baseNumZero + baseNumOne;
-      baseNumZero = baseNumOne;
-      baseNumOne = temp;
-    }
-    cout << temp;
-  }
+  return 0;
 }
