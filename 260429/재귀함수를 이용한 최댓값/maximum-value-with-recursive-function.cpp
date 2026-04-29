@@ -1,17 +1,15 @@
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
 int n;
 int arr[100];
-int MAX;
 
-void FindMax(int arr[], int idx, int N){
-    if(idx == N) return;
+int FindMax(int idx){
+    if(idx == 0) return arr[0];
 
-    if(arr[idx] > MAX) MAX = arr[idx];
-
-    FindMax(arr, idx+1, N);
+    return max(FindMax(idx-1), arr[idx]);
 }
 
 int main() {
@@ -21,9 +19,7 @@ int main() {
         cin >> arr[i];
     }
 
-    FindMax(arr, 0, n);
-
-    cout << MAX;
+    cout << FindMax(n-1);
 
     return 0;
 }
