@@ -1,7 +1,7 @@
 #include <iostream>
 #include <algorithm>
 
-#define MAX_N 1005
+#define MAX_N 2010
 
 using namespace std;
 
