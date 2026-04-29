@@ -12,7 +12,9 @@ int GetGroupMax(){
     int maxSum = 0;
     for(int i=0; i<N; i++){
         int curSum = arr[i] + arr[N-1-i];
-        if(curSum>maxSum) maxSum = curSum;
+        if(curSum>maxSum) {
+            maxSum = curSum;
+        }
     }
     return maxSum;
 }
