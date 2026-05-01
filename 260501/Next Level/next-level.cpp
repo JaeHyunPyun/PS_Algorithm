@@ -19,7 +19,10 @@ int main() {
 
     cin >> user_id >> user_level;
 
-    Account user1 = Account("codetree", 10);
+    Account user1 = Account();
+    user1.id = "codetree";
+    user1.level = 10;
+
     Account user2 = Account(user_id, user_level);
 
     cout << "user " << user1.id << " lv " << user1.level << "\n";
