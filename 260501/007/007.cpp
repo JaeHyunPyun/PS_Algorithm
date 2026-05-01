@@ -1,28 +1,33 @@
 #include <iostream>
-#include <tuple>
 #include <string>
 
 using namespace std;
 
+class Spy {
+    public:
+        string secret_code;
+        char meeting_point;
+        int time;
+        Spy(string secret_code, char meeting_point, int time){
+            this->secret_code = secret_code;
+            this->meeting_point = meeting_point;
+            this->time = time;
+        }
+};
+
 int main() {
     
     string s;
-    string l;
-    int ti;
+    char l;
+    int t;
 
-    cin >> s >> l >> ti;
+    cin >> s >> l >> t;
     
-    tuple<string, string, int> t = make_tuple(s, l, ti);
+    Spy spy = Spy(s, l, t);
 
-    string secret_code;
-    string meeting_point;
-    int time;
-    
-    tie(secret_code, meeting_point, time) = t;
-
-    cout << "secret code : " << secret_code << "\n";
-    cout << "meeting point : " << meeting_point << "\n";
-    cout << "time : " << time << "\n";
+    cout << "secret code : " << spy.secret_code << "\n";
+    cout << "meeting point : " << spy.meeting_point << "\n";
+    cout << "time : " << spy.time << "\n";
 
     return 0;
 }
