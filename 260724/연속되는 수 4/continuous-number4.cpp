@@ -20,15 +20,14 @@ int main() {
 
     int cnt = 1;
     for (int i=0; i<n; i++){
-        if(i==0 || array1[i]<=array1[i-1]){
-            max_cnt = max(cnt, max_cnt);
-            cnt = 1;
-        } else {
+        if(i!=0 && array1[i]>array1[i-1]){
             cnt++;
-        }
+        } else {
+            cnt = 1;
+        }        
+        max_cnt = max(cnt, max_cnt);
     }
-    
-    max_cnt = max(cnt, max_cnt);
+
 
     cout << max_cnt;
 
